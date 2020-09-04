@@ -43,18 +43,6 @@ public class LambdaTest {
     }
 
 
-    /**
-     * 参数：无参
-     */
-    @Test
-    public void test01() {
-        // 参数：无参，参数部分为 ()
-        Supplier<Integer> supplier = () -> {
-            int num = new Random().nextInt(10);
-            return num;
-        };
-        System.out.println(supplier.get());
-    }
 
     /**
      * 参数：只有一个参数
