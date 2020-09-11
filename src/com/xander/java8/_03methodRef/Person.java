@@ -1,5 +1,7 @@
 package com.xander.java8._03methodRef;
 
+import java.util.Objects;
+
 /**
  * Description:
  *
@@ -11,9 +13,9 @@ public class Person {
     //姓名
     private String name;
     //年龄
-    private long age;
+    private int age;
 
-    public Person(String name, long age) {
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -26,11 +28,11 @@ public class Person {
         this.name = name;
     }
 
-    public long getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(long age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -40,6 +42,21 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return getAge() == person.getAge() &&
+                Objects.equals(getName(), person.getName());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getName(), getAge());
     }
 
     /**

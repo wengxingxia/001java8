@@ -1,6 +1,10 @@
 package com.xander.java8._06default_static_method;
 
+import com.xander.java8._03methodRef.Person;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Description:
@@ -27,6 +31,32 @@ public class DefaultMethodTest {
         // **方法冲突**，类中实现了两个接口，这两个接口中具有相同名称和参数列表的方法(不管是不是default方法)，如类中没有对default方法进行重写，则编译出错。子类中必须必须覆盖该方法来解决冲突。
         fish.sayHello();
     }
+
+    @Test
+    public void testGeneric2() {
+
+        Person s1 = new Person("aa", 10);
+        Person s2 = new Person("bb", 20);
+        List<Person> PersonList = Arrays.asList(s1, s2);
+
+        PersonList.stream()
+                .peek(o -> o.setAge(100))
+                .forEach(System.out::println);
+
+    }
+    @Test
+    public void testGeneric() {
+        // 获取 GenericIntf接口实例的 泛型类型
+        GenericIntf<Integer> genericInt = new GenericInteger();
+        GenericIntf<Double> genericDouble = new GenericDouble();
+
+        Class<Integer> genericIntClass = genericInt.getGenericClass();//泛型类型是 Integer
+        Class<Double> genericDoubleClass = genericDouble.getGenericClass();//泛型类型是 Double
+
+        System.out.println("GenericInteger 的泛型类型：" + genericIntClass);
+        System.out.println("GenericDouble 的泛型类型：" + genericDoubleClass);
+    }
+
 
 }
 

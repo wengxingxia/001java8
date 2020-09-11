@@ -109,13 +109,13 @@ public class MethodRefTest {
     public void test07() {
         //通过函数式接口BiFunction 创建 Person 实例
         //lambda表达式
-        BiFunction<String, Long, Person> bfLambda = (name, age) -> new Person(name, age);
+        BiFunction<String, Integer, Person> bfLambda = (name, age) -> new Person(name, age);
         // 构造器引用：类名::new
-        BiFunction<String, Long, Person> bfConstRef = Person::new;
+        BiFunction<String, Integer, Person> bfConstRef = Person::new;
         // lambda表达式生成的Person
-        Person personLambda = bfLambda.apply("张三", 20L);
+        Person personLambda = bfLambda.apply("张三", 20);
         // 构造器引用生成的Person
-        Person personConstRef = bfConstRef.apply("李四", 25L);
+        Person personConstRef = bfConstRef.apply("李四", 25);
         System.out.println(personLambda);
         System.out.println(personConstRef);
     }
